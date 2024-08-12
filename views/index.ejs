@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soal Ujian</title>
+</head>
+<body>
+    <h1>HALO KIDS pilih ujian</h1>
+    <div id="list-ujian">
+        <% if (mapel && mapel.length > 0) { %>
+            <% mapel.forEach(subject => { %>
+                <button onclick="redirectToSoal('<%= encodeURIComponent(subject) %>')"><%= subject %></button>
+            <% }) %>
+        <% } else { %>
+            <p>No data found</p>
+        <% } %>
+    </div>
+    
+    <script>
+        function redirectToSoal(subject) {
+            const encodedSubject = encodeURIComponent(subject);
+            window.location.pathname = `/soal/${encodedSubject}`;
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div id="test" class="text-4xl">YOU CANNOT DO LEAVES THIS PAGE!</div>
+    <script>
+      document.addEventListener("visibilitychange", function () {
+        const value = document.getElementById("test");
+        if (document.visibilityState === "hidden") {
+          alert("GoodBye!");
+          value.classList.add("hidden");
+          localStorage.setItem("isHidden", "true");
+          console.log("Page is now hidden");
+        } else if (document.visibilityState === "visible") {
+          console.log("Page is now visible");
+        }
+      });
+
+      window.addEventListener("resize", function () {
+        alert("Jangan mencontek!");
+        location.reload();
+      });
+
+      // Check localStorage on page load
+      window.addEventListener("load", function () {
+        const value = document.getElementById("test");
+        const isHidden = localStorage.getItem("isHidden");
+        if (isHidden === "true") {
+          value.innerHTML = `GET OUT YOU ARE CHEATER!`;
+        }
+      });
+    </script>
+  </body>
+</html>
